@@ -1,0 +1,62 @@
+@import './SharedStyles.css';
+
+.trial-page {
+  min-height: 100vh;
+  background: var(--color-bg);
+}
+
+.trial-launch-btn {
+  margin-top: 1.5rem;
+}
+
+.trial-direct {
+  padding: clamp(3rem, 6vw, 4.5rem) 0;
+}
+
+.trial-direct-card {
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+  padding: clamp(2rem, 4vw, 2.75rem);
+  box-shadow: var(--shadow-soft);
+  display: grid;
+  gap: 1.5rem;
+}
+
+.trial-direct-card h2 {
+  margin: 0;
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.trial-direct-card ol {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: grid;
+  gap: 0.75rem;
+  color: var(--color-muted);
+}
+
+.trial-direct-card ol li {
+  line-height: 1.7;
+}
+
+.trial-direct-card .btn {
+  justify-self: start;
+}
+
+@media (max-width: 768px) {
+  .trial-direct-card {
+    padding: 1.75rem;
+    border-radius: 20px;
+  }
+  
+  .trial-direct-card .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+

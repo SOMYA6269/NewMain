@@ -1,0 +1,284 @@
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  background: radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.12), transparent 45%),
+    radial-gradient(circle at 80% 30%, rgba(14, 165, 233, 0.12), transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(147, 197, 253, 0.14), transparent 55%),
+    linear-gradient(135deg, #f8fafc 0%, #e5edff 35%, #eef2ff 100%);
+  transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+}
+
+.splash-screen.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.splash-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.splash-content {
+  text-align: center;
+  display: grid;
+  gap: 1.4rem;
+  justify-items: center;
+  animation: fadeInUp 0.7s ease-out;
+}
+
+.splash-orbit {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  display: grid;
+  place-items: center;
+}
+
+.orbit-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px solid rgba(59, 130, 246, 0.18);
+  animation: orbitSpin 12s linear infinite;
+}
+
+.orbit-ring--outer {
+  width: 220px;
+  height: 220px;
+  border-color: rgba(14, 165, 233, 0.18);
+}
+
+.orbit-ring--inner {
+  width: 160px;
+  height: 160px;
+  animation-direction: reverse;
+}
+
+.orbit-dot {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563eb, #4338ca);
+  box-shadow: 0 8px 16px rgba(37, 99, 235, 0.35);
+}
+
+.orbit-dot--one {
+  top: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: orbitDotOne 6s ease-in-out infinite;
+}
+
+.orbit-dot--two {
+  bottom: 14%;
+  right: 16%;
+  animation: orbitDotTwo 5.5s ease-in-out infinite;
+}
+
+.splash-logo-container {
+  width: 130px;
+  height: 130px;
+  border-radius: 26px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 28px 56px rgba(15, 23, 42, 0.16);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  animation: logoPulse 3.6s ease-in-out infinite;
+}
+
+.splash-logo-img {
+  width: 74%;
+  height: auto;
+  object-fit: contain;
+}
+
+.splash-brand-text h1 {
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  margin: 0;
+  color: #0f172a;
+}
+
+.splash-brand-text p {
+  margin: 0.4rem 0 0;
+  font-size: 1rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: rgba(51, 65, 85, 0.85);
+}
+
+.splash-tagline p {
+  font-size: 1.05rem;
+  color: #1f2937;
+  max-width: 480px;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.splash-loader {
+  width: 220px;
+  height: 4px;
+  background: rgba(148, 163, 184, 0.22);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.loader-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #2563eb, #1d4ed8, #4338ca);
+  background-size: 200% 100%;
+  border-radius: 999px;
+  animation: loaderProgress 1.9s ease-in-out infinite;
+}
+
+@keyframes loaderProgress {
+  0% {
+    width: 0%;
+    background-position: 0% 50%;
+  }
+  50% {
+    width: 80%;
+    background-position: 100% 50%;
+  }
+  100% {
+    width: 100%;
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes orbitSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbitDotOne {
+  0%,
+  100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, -12px);
+  }
+}
+
+@keyframes orbitDotTwo {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(6px, 10px);
+  }
+}
+
+@keyframes logoPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 28px 56px rgba(15, 23, 42, 0.16);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 34px 64px rgba(15, 23, 42, 0.2);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-surface {
+    border-radius: 22px;
+  }
+
+  .splash-orbit {
+    width: 180px;
+    height: 180px;
+  }
+
+  .orbit-ring--outer {
+    width: 180px;
+    height: 180px;
+  }
+
+  .orbit-ring--inner {
+    width: 130px;
+    height: 130px;
+  }
+
+  .splash-logo-container {
+    width: 110px;
+    height: 110px;
+  }
+
+  .splash-brand-text h1 {
+    font-size: 2.1rem;
+  }
+
+  .splash-tagline p {
+    font-size: 0.95rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .splash-orbit {
+    width: 150px;
+    height: 150px;
+  }
+
+  .orbit-ring--outer {
+    width: 150px;
+    height: 150px;
+  }
+
+  .orbit-ring--inner {
+    width: 110px;
+    height: 110px;
+  }
+
+  .splash-logo-container {
+    width: 95px;
+    height: 95px;
+  }
+
+  .splash-brand-text h1 {
+    font-size: 1.8rem;
+  }
+
+  .splash-brand-text p {
+    font-size: 0.82rem;
+  }
+
+  .splash-tagline p {
+    font-size: 0.85rem;
+  }
+
+  .splash-loader {
+    width: 180px;
+  }
+}
